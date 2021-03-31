@@ -8,6 +8,7 @@ import cPickle
 import sys
 import os
 
+
 def readFeatures(ll):
 	colon_seperated = [x.strip() for x in ll.strip().spilt(' ')]
 	f_list = [int(x.split(':')[1]) for x in colon_seperated]
@@ -290,25 +291,25 @@ def multiplyData(y,node,edge):
 	node = node + node_
 	return N,y,node,edge
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
 	global min_length_sequence, use_data_augmentation, extra_samples, copy_start_state, params, fold, train_activities, test_activities, prefix
 	use_data_augmentation = True
 	min_length_sequence = 4
 	extra_samples = 100
 	copy_start_state = True
 	params = {
-		'use_data_augmentation':use_data_augmentation,
-		'min_length_sequence':min_length_sequence,
-		'extra_samples':extra_samples,
-		'copy_start_state':copy_start_state,
-		}
+		'use_data_augmentation': use_data_augmentation,
+		'min_length_sequence': min_length_sequence,
+		'extra_samples': extra_samples,
+		'copy_start_state': copy_start_state,
+	}
 
-	folds = ['1','2','3','4']	
+	folds = ['1', '2', '3', '4']
 	prefix = sixDigitRandomNum()	
 	for fold in folds:	
-		#s='/scr/ashesh/activity-anticipation/features_full_model'
-		s='/scr/ashesh/activity-anticipation/features_ground_truth'
+		# s = '/scr/ashesh/activity-anticipation/features_full_model'
+		s = '/scr/ashesh/activity-anticipation/features_ground_truth'
 		test_file = '/scr/ashesh/activity-anticipation/activityids_fold{0}.txt'.format(fold)
 		
 		lines = open(test_file).readlines()
@@ -317,7 +318,7 @@ if __name__ == '__main__':
 			line = line.strip()
 			if len(line) > 0:
 				test_activities.append(line)	
-		print "test ",test_file
+		print "test ", test_file
 
 		train_activities = []
 		
@@ -325,7 +326,7 @@ if __name__ == '__main__':
 			if j == fold:
 				continue
 			train_file = '/scr/ashesh/activity-anticipation/activityids_fold{0}.txt'.format(j)
-			print "train ",train_file
+			print "train ", train_file
 			lines = open(train_file).readlines()
 			for line in lines:
 				line = line.strip()
