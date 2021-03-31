@@ -77,3 +77,6 @@ target/
 */MocapToolbox/oldmatlab/*
 */crf_to_rnn/CRFProblems/datasets/*
 */crf_to_rnn/CRFProblems/H3.6m/dataset/*
+
+# PyCharm IDE settings
+.idea/
